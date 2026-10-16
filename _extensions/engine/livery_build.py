@@ -256,7 +256,8 @@ def emit_css(livery: dict) -> str:
     L.append("html:root {\n  --mermaid-bg-color: var(--engine-background);\n  --mermaid-node-bg-color: var(--engine-surface);"
              "\n  --mermaid-node-fg-color: var(--engine-foreground);\n  --mermaid-fg-color: var(--engine-foreground);"
              "\n  --mermaid-edge-color: var(--engine-foreground);\n  --mermaid-label-bg-color: var(--engine-background);"
-             "\n  --mermaid-label-fg-color: var(--engine-primary-contrast);\n}")
+             "\n  --mermaid-label-fg-color: var(--engine-primary-contrast);"
+             "\n  --mermaid-font-family: var(--engine-font-family), Helvetica, Arial, sans-serif;\n}")
     SEL = {"title": "section.engine-title", "section": "section.slide.engine-section",
            "closing": "section.slide.level2.closing", "content": "section.slide.level2:not(.engine-section):not(.closing):not(.feature):not(.full)"}
     for kind, sel in SEL.items():   # a static background per slide kind (the engine draws no waves there)
