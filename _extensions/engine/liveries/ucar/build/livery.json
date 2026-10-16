@@ -8,6 +8,7 @@
   },
   "divider": {
     "label": "Section",
+    "label-color": "#011837",
     "tab": true
   },
   "geometry": {

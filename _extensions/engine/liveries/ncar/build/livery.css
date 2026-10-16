@@ -23,6 +23,7 @@
   --engine-caution-fill: #FFF9DA;
   --engine-logo-h: 58px;
   --engine-logo-w: 228.2px;
+  --engine-logo-aspect: 3.934;
   --engine-font-family: "Poppins";
 }
 .reveal .slides section.slide::after,

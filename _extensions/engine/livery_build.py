@@ -200,6 +200,10 @@ def emit_css(livery: dict) -> str:
         props.append(f"--engine-logo-h: {h:g}px;")
         if "aspect" in logo:
             props.append(f"--engine-logo-w: {h * logo['aspect']:.1f}px;")
+    if "aspect" in logo:
+        props.append(f"--engine-logo-aspect: {logo['aspect']};")
+    if "label-color" in livery.get("divider", {}):
+        props.append(f"--engine-divider-label: {livery['divider']['label-color']};")
     props.append(f'--engine-font-family: "{family}";')
     L.append(":root {\n  " + "\n  ".join(props) + "\n}")
     light, dark = (Path(logo_path(livery, v, False)).name for v in ("light", "dark"))

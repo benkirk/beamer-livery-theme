@@ -12,3 +12,6 @@ geometry:
   logo:
     height: 0.0516        # 46.4 px of 900
     aspect: 3.928         # 381/97
+
+divider:
+  label-color: "#011837"  # Space on Aqua: Light Aqua is too light for the eyebrow (Brand Guide p22)
