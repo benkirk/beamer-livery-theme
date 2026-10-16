@@ -14,6 +14,7 @@
   --engine-primary-text: #011837;
   --engine-primary-contrast: #00818F;
   --engine-accent: #FFDD31;
+  --engine-highlight: #00818F;
   --engine-muted: #6B7C99;
   --engine-surface: #F1F0EE;
   --engine-warning: #FFDD31;
@@ -21,6 +22,7 @@
   --engine-table-rule: #C1CBD7;
   --engine-table-band: #F7F6F5;
   --engine-caution-fill: #FFF9DA;
+  --engine-alert-text: #B5540A;
   --engine-logo-h: 58px;
   --engine-logo-w: 159.3px;
   --engine-logo-aspect: 2.746;
