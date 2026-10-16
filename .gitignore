@@ -22,3 +22,6 @@ examples/*_files/
 /talk-quarto_files/
 examples/*.html
 /ncar-beamer-overleaf.zip
+_baseline/
+_check/
+_check.diff
