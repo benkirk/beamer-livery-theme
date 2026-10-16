@@ -697,7 +697,7 @@ html.reveal-print .reveal .slides {
 // reveal's own custom properties, set by Quarto from the Sass literals above
 :root {
   --r-main-font: var(--engine-font-family, "Poppins"), Helvetica, Arial, sans-serif;
-  --r-heading-font: var(--engine-font-family, "Poppins"), Helvetica, Arial, sans-serif;
+  --r-heading-font: var(--engine-heading-font-family, var(--engine-font-family, "Poppins")), Helvetica, Arial, sans-serif;
   --r-background-color: var(--engine-background);
   --r-main-color: var(--engine-foreground);
   --r-heading-color: var(--engine-foreground);

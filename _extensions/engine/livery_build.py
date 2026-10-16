@@ -167,6 +167,17 @@ def base_font(livery: dict) -> tuple[str, list]:
     return family, []
 
 
+def heading_font(livery: dict) -> tuple[str, list]:
+    """The headings family and its files when it is a second family with files of its own."""
+    t = livery["typography"]
+    family = t.get("headings", "")
+    if family and family != t.get("base", ""):
+        for font in t.get("fonts", []):
+            if font.get("family") == family and font.get("files"):
+                return family, font["files"]
+    return "", []
+
+
 def emit_sty(livery: dict, sources: dict, extra: str = "") -> str:
     """The .sty text; `extra` (the override files) goes before the catcode restore."""
     names = livery.get("latex", {}).get("colors", {})
@@ -212,6 +223,16 @@ def emit_sty(livery: dict, sources: dict, extra: str = "") -> str:
         face = faces.get((f.get("weight", 400), f.get("style") == "italic"))
         if face:
             L.append(f"\\def\\engine@font@{face}{{{Path(f['path']).stem}}}")
+    hfamily, hfiles = heading_font(livery)
+    if hfamily:   # a second family for headings (typography.headings), same shape
+        L.append("% the headings family's files, when it is a family of its own")
+        L.append(f"\\def\\engine@headfont@family{{{hfamily}}}")
+        L.append(f"\\def\\engine@headfont@dir{{\\engineliverydir {Path(hfiles[0]['path']).parent.as_posix()}/}}")
+        L.append(f"\\def\\engine@headfont@ext{{{Path(hfiles[0]['path']).suffix}}}")
+        for f in hfiles:
+            face = faces.get((f.get("weight", 400), f.get("style") == "italic"))
+            if face:
+                L.append(f"\\def\\engine@headfont@{face}{{{Path(f['path']).stem}}}")
     L.append("% geometry, in fractions of the slide")
     geom = livery.get("geometry", {})
     for k, v in geom.items():
@@ -250,10 +271,12 @@ def emit_css(livery: dict, extra: str = "") -> str:
          f" * livery {livery['name']}. Attached by engine-revealjs.lua with the font and logo files",
          " * beside it, so the url()s are bare file names. */"]
     family, files = base_font(livery)
-    for f in files:
-        L.append(f'@font-face {{ font-family: "{family}"; font-style: {f.get("style", "normal")}; '
-                 f'font-weight: {f.get("weight", 400)}; font-display: block; '
-                 f'src: url("{Path(f["path"]).name}") format("{"opentype" if Path(f["path"]).suffix == ".otf" else "truetype"}"); }}')
+    hfamily, hfiles = heading_font(livery)
+    for fam, fs in ((family, files), (hfamily, hfiles)):
+        for f in fs:
+            L.append(f'@font-face {{ font-family: "{fam}"; font-style: {f.get("style", "normal")}; '
+                     f'font-weight: {f.get("weight", 400)}; font-display: block; '
+                     f'src: url("{Path(f["path"]).name}") format("{"opentype" if Path(f["path"]).suffix == ".otf" else "truetype"}"); }}')
     props = [f"--engine-{k}: {v};" for k, v in livery["roles"].items()]
     props += [f"--engine-{k}: {v};" for k, v in livery["derived"].items()]
     geom = livery.get("geometry", {})
@@ -278,6 +301,8 @@ def emit_css(livery: dict, extra: str = "") -> str:
     if "label-color" in livery.get("divider", {}):
         props.append(f"--engine-divider-label: {livery['divider']['label-color']};")
     props.append(f'--engine-font-family: "{family}";')
+    if hfamily:
+        props.append(f'--engine-heading-font-family: "{hfamily}";')
     props.append("--engine-overlay: color-mix(in srgb, var(--engine-dark) 72%, transparent);")
     # the content-slide mark's corner (top-right | top-left | none) and the page number's; the title
     # box gives way on the mark's side
