@@ -29,6 +29,7 @@ BLENDS = [
     ("table-band", "surface", "background", 0.60),
     ("caution-fill", "warning", "background", 0.18),
     ("alert-text", "accent", "dark", 0.72),
+    ("rule", "foreground", "surface", 0.30),
 ]
 # livery role -> the LaTeX color the themes read (engine_livery.sty's six, plus the four new)
 ROLE_TEX = {"primary": "BrandPrimary", "primary-text": "BrandPrimaryText",
@@ -207,7 +208,13 @@ def emit_css(livery: dict) -> str:
     if "label-color" in livery.get("divider", {}):
         props.append(f"--engine-divider-label: {livery['divider']['label-color']};")
     props.append(f'--engine-font-family: "{family}";')
+    props.append("--engine-overlay: color-mix(in srgb, var(--engine-dark) 72%, transparent);")
     L.append(":root {\n  " + "\n  ".join(props) + "\n}")
+    # Quarto sets --mermaid-* on :root from its Sass; html:root outranks it, so mermaid wears the roles
+    L.append("html:root {\n  --mermaid-bg-color: var(--engine-background);\n  --mermaid-node-bg-color: var(--engine-surface);"
+             "\n  --mermaid-node-fg-color: var(--engine-foreground);\n  --mermaid-fg-color: var(--engine-foreground);"
+             "\n  --mermaid-edge-color: var(--engine-foreground);\n  --mermaid-label-bg-color: var(--engine-background);"
+             "\n  --mermaid-label-fg-color: var(--engine-primary-contrast);\n}")
     light, dark = (Path(logo_path(livery, v, False)).name for v in ("light", "dark"))
     L.append(".reveal .slides section.slide::after,\n.reveal .slides section.engine-title::after "
              f'{{ background-image: url("{light}"); }}')
