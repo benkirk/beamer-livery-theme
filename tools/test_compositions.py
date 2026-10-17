@@ -134,6 +134,8 @@ EXPECTED_DELTAS = {
                          "decided": "[0.48, 0, 0.52, 1]"}, None),
     "straight field edge": ({"pdf": 0.5, "html": 0.5, "pptx": 0.52, "decided": 0.5}, None),
     "wave line width": ({"pdf": "0.8pt = 0.0018W", "html": "2.4px = 0.0015W", "pptx": 0.0015, "decided": 0.0015}, None),
+    "mark y": ({"pdf": "0.06 / 0.075 / 0.075", "html": "0.08 / 0.08 / 0.09", "pptx": "0.06 / 0.08 / 0.09",
+                "decided": "0.06 / 0.08 / 0.09"}, each(COVERS, setbox("mark", 1, 0.06))),
 }
 
 
