@@ -104,7 +104,7 @@ div.reveal div.slides section.engine-title.quarto-title-block {
   --engine-cmp-column-display: block;
   --engine-cmp-column-x: 96px;
   --engine-cmp-column-y: 180px;
-  --engine-cmp-column-w: 816.6px;
+  --engine-cmp-column-w: 800px;
   --engine-cmp-column-h: 660px;
   --engine-cmp-fineprint-display: block;
   --engine-cmp-fineprint-x: 96px;
@@ -214,7 +214,7 @@ html.engine-title-light div.reveal div.slides section.engine-title.quarto-title-
   --engine-cmp-column-display: block;
   --engine-cmp-column-x: 96px;
   --engine-cmp-column-y: 180px;
-  --engine-cmp-column-w: 816.6px;
+  --engine-cmp-column-w: 800px;
   --engine-cmp-column-h: 660px;
   --engine-cmp-fineprint-display: block;
   --engine-cmp-fineprint-x: 96px;

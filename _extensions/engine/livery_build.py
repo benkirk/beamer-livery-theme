@@ -300,7 +300,7 @@ def compositions(name: str, data: dict, out: dict) -> dict:
              "waves": wave("bands", shift.get("title", 0), [0.18, 0.10]),
              "mark": mark(*tm, "primary"),
              "signoff": signoff("primary"),
-             "column": {"box": _box(m, ty, 0.58 * pad_w, 1 - ty - 60 / H), "anchor": "top",
+             "column": {"box": _box(m, ty, 0.50, 1 - ty - 60 / H), "anchor": "top",
                         "role": "primary-text", "tab": True, "rule": rule},
              "fineprint": {"box": _box(m, 1 - 36 / H - 0.10, 0.50, 0.10), "anchor": "bottom", "role": "primary-text"}}
     over = data.get("compositions") or {}

@@ -138,6 +138,8 @@ EXPECTED_DELTAS = {
                 "decided": "0.06 / 0.08 / 0.09"}, each(COVERS, setbox("mark", 1, 0.06))),
     "title column top": ({"pdf": 0.205, "html": 0.20, "pptx": 0.375, "decided": "mark bottom + 0.05 (0.20)"}, None),
     "title column anchor": ({"pdf": "top", "html": "top", "pptx": "fixed y", "decided": "top"}, None),
+    "title column w, no photo": ({"pdf": 0.62, "html": 0.510, "pptx": 0.50, "decided": 0.50},
+                                  each(("title", "title-light"), setbox("column", 2, 0.50))),
 }
 
 
