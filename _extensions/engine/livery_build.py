@@ -292,13 +292,15 @@ def compositions(name: str, data: dict, out: dict) -> dict:
     empty = dict.fromkeys(COMP_KEYS)
     pad_w = 1 - 2 * m   # the HTML's padded box, which its percentages are of
     rule = [round(208 / W, 4), round(3 / H, 4)]
+    tm = (0.06, logo.get("title", 0.09))   # the title mark's y and height; the column starts 0.05 under it
+    ty = tm[0] + tm[1] + 0.05
     title = {**empty,
              "field": {"role": "primary", "box": _box(0, 0, 1, 1)},
              "art": "title" if has_art("title") else None,
              "waves": wave("bands", shift.get("title", 0), [0.18, 0.10]),
-             "mark": mark(0.06, logo.get("title", 0.09), "primary"),
+             "mark": mark(*tm, "primary"),
              "signoff": signoff("primary"),
-             "column": {"box": _box(m, 180 / H, 0.58 * pad_w, 1 - 180 / H - 60 / H), "anchor": "top",
+             "column": {"box": _box(m, ty, 0.58 * pad_w, 1 - ty - 60 / H), "anchor": "top",
                         "role": "primary-text", "tab": True, "rule": rule},
              "fineprint": {"box": _box(m, 1 - 36 / H - 0.10, 0.50, 0.10), "anchor": "bottom", "role": "primary-text"}}
     over = data.get("compositions") or {}
