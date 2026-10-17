@@ -132,6 +132,7 @@ EXPECTED_DELTAS = {
     # row: (what each format drew and what was decided, the change to today() or None)
     "cover photo box": ({"pdf": "0.52W anchored right", "html": "left 48%, w 52%", "pptx": "full slide",
                          "decided": "[0.48, 0, 0.52, 1]"}, None),
+    "straight field edge": ({"pdf": 0.5, "html": 0.5, "pptx": 0.52, "decided": 0.5}, None),
 }
 
 
