@@ -353,7 +353,7 @@ def compositions(name: str, data: dict, out: dict) -> dict:
                     "field": {"role": t["field"], "box": _box(0, 0, 1, 1)},
                     "art": "closing" if has_art("closing") else "title" if has_art("title") else None,
                     "mark": smark, "signoff": ssign,
-                    "column": {**closing_col, "role": t["field-text"]}}
+                    "column": {**closing_col, "box": _box(m, 0.10, 0.62, bottom - 0.13), "role": t["field-text"]}}
     div = g.get("divider", {}); dv = out.get("divider", {})
     section = {**empty,
                "field": {"role": "primary", "box": _box(0, 0, 1, 1)},

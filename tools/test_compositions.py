@@ -159,6 +159,10 @@ EXPECTED_DELTAS = {
                        each(("closing", "closing-light", "closing-band"), lambda x, L: x["column"].update(
                            box=[L["geometry"]["margin"], 0.09 + L["geometry"]["logo"]["closing"] + 0.03, 0.62,
                                 0.88 - 0.09 - L["geometry"]["logo"]["closing"] - 0.03]))),
+    "closing-band column": ({"pdf": "strut + vfill", "html": "as closing", "pptx": "0.30/0.49",
+                             "decided": "[m, 0.10, 0.62, bottom - 0.13]"},
+                            lambda c, L: c["closing-band"]["column"].update(box=[L["geometry"]["margin"], 0.10, 0.62,
+                                {**lb.BAND, **L.get("title", {})}["bottom"] - 0.13])),
 }
 
 
