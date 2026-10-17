@@ -312,7 +312,7 @@ html div.reveal div.slides section.engine-title.quarto-title-block.engine-band {
   --engine-cmp-panel-w: 0px;
   --engine-cmp-panel-h: 0px;
   --engine-cmp-mark-display: block;
-  --engine-cmp-mark-x: 96px;
+  --engine-cmp-mark-x: 1280.5px;
   --engine-cmp-mark-y: 733.5px;
   --engine-cmp-mark-w: 223.5px;
   --engine-cmp-mark-h: 81px;
@@ -476,7 +476,7 @@ html .reveal .slides section.slide.level2.closing.engine-band {
   --engine-cmp-panel-w: 0px;
   --engine-cmp-panel-h: 0px;
   --engine-cmp-mark-display: block;
-  --engine-cmp-mark-x: 96px;
+  --engine-cmp-mark-x: 1280.5px;
   --engine-cmp-mark-y: 733.5px;
   --engine-cmp-mark-w: 223.5px;
   --engine-cmp-mark-h: 81px;

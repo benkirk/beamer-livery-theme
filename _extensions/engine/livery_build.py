@@ -281,7 +281,7 @@ def compositions(name: str, data: dict, out: dict) -> dict:
         mk = None
         if logo.get("corner", "top-right") != "none":
             h = t["logo-height"]; w = h * logo.get("aspect", 1) * hw
-            mk = {"role": role, "box": _box(m if left is False or left is None else 1 - m - w, mid - h / 2, w, h)}
+            mk = {"role": role, "box": _box(m if left is False else 1 - m - w, mid - h / 2, w, h)}
         return mk, sig
 
     def wave(style, shift, opacity, role="secondary"):

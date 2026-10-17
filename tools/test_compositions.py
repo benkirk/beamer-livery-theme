@@ -172,6 +172,9 @@ EXPECTED_DELTAS = {
     "band fineprint gap": ({"pdf": "bottom + 0.02", "html": "bottom + 0.018", "pptx": "none", "decided": 0.018},
                            lambda c, L: (setbox("fineprint", 1, lambda L: {**lb.BAND, **L.get("title", {})}["bottom"] + 0.018)(c["title-band"], L),
                                          setbox("fineprint", 2, lambda L: {**lb.BAND, **L.get("title", {})}["split"] - L["geometry"]["margin"] - 0.04)(c["title-band"], L))),
+    "band mark without a sign-off": ({"pdf": "right", "html": "left", "pptx": "right", "decided": "right"},
+                                     each(("title-band", "closing-band"), lambda x, L: L.get("signoff") or setbox("mark", 0, lambda L:
+                                         1 - L["geometry"]["margin"] - x["mark"]["box"][2])(x, L))),
 }
 
 
