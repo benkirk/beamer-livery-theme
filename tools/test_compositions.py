@@ -146,6 +146,7 @@ EXPECTED_DELTAS = {
     "fineprint": ({"pdf": "0.02H above the floor", "html": "bottom 36px, w 50%", "pptx": "none",
                    "decided": "[m, 0.86, w, 0.10] anchor bottom; the column ends at 0.86"},
                   lambda c, L: [each(COVERS, setbox("column", 3, 0.66))(c, L), each(PHOTOS, setbox("fineprint", 2, 0.44))(c, L)]),
+    "sign-off under title=light": ({"pdf": "dark", "html": "light", "pptx": "light", "decided": "role background"}, None),
 }
 
 
