@@ -137,6 +137,7 @@ EXPECTED_DELTAS = {
     "mark y": ({"pdf": "0.06 / 0.075 / 0.075", "html": "0.08 / 0.08 / 0.09", "pptx": "0.06 / 0.08 / 0.09",
                 "decided": "0.06 / 0.08 / 0.09"}, each(COVERS, setbox("mark", 1, 0.06))),
     "title column top": ({"pdf": 0.205, "html": 0.20, "pptx": 0.375, "decided": "mark bottom + 0.05 (0.20)"}, None),
+    "title column anchor": ({"pdf": "top", "html": "top", "pptx": "fixed y", "decided": "top"}, None),
 }
 
 
