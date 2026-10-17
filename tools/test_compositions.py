@@ -140,6 +140,8 @@ EXPECTED_DELTAS = {
     "title column anchor": ({"pdf": "top", "html": "top", "pptx": "fixed y", "decided": "top"}, None),
     "title column w, no photo": ({"pdf": 0.62, "html": 0.510, "pptx": 0.50, "decided": 0.50},
                                   each(("title", "title-light"), setbox("column", 2, 0.50))),
+    "title column w, photo": ({"pdf": 0.47, "html": 0.387, "pptx": 0.50, "decided": 0.44},
+                               each(PHOTOS, setbox("column", 2, 0.44))),
 }
 
 

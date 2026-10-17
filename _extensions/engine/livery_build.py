@@ -316,7 +316,7 @@ def compositions(name: str, data: dict, out: dict) -> dict:
         col = c["column"]["box"]
         return variant(c, field={"box": _box(0, 0, 0.5, 1)}, photo={"box": _box(0.48, 0, 0.52, 1)},
                        waves=wave("cover", 0, [0.65], "secondary"),
-                       column={"box": [col[0], col[1], round(0.44 * pad_w, 4), col[3]]})
+                       column={"box": [col[0], col[1], 0.44, col[3]]})
 
     def light(c):
         w = c["waves"]
