@@ -291,7 +291,7 @@ def compositions(name: str, data: dict, out: dict) -> dict:
     shift = (waves or {}).get("shift", {})
     empty = dict.fromkeys(COMP_KEYS)
     pad_w = 1 - 2 * m   # the HTML's padded box, which its percentages are of
-    rule = [round(208 / W, 4), round(3 / H, 4)]
+    rule = [0.13, 0.0033]   # [width of W, thickness of H]
     tm = (0.06, logo.get("title", 0.09))   # the title mark's y and height; the column starts 0.05 under it
     ty = tm[0] + tm[1] + 0.05
     title = {**empty,

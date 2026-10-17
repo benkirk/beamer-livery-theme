@@ -142,6 +142,7 @@ EXPECTED_DELTAS = {
                                   each(("title", "title-light"), setbox("column", 2, 0.50))),
     "title column w, photo": ({"pdf": 0.47, "html": 0.387, "pptx": 0.50, "decided": 0.44},
                                each(PHOTOS, setbox("column", 2, 0.44))),
+    "title rule": ({"pdf": "0.13W x 1.2pt", "html": "0.13W x 3px", "pptx": "0.065W x 1.5pt", "decided": "[0.13, 0.0033]"}, None),
 }
 
 
