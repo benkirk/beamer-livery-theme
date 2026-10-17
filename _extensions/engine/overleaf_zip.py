@@ -72,7 +72,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("livery", type=Path)
     ap.add_argument("-o", "--out", type=Path, required=True, help="the zip to write")
-    ap.add_argument("--starter", type=Path, default=ENGINE.parents[1] / "talk.tex", help="default: the engine's talk.tex")
+    ap.add_argument("--starter", type=Path, default=ENGINE / "talk.tex", help="default: the engine's talk.tex")
     ap.add_argument("--photo", type=Path, help="the title and photo-slide picture (default: the livery's art.titlegraphic)")
     a = ap.parse_args()
     name = a.livery.name          # as named, not resolved: the framework's liveries/ncar is a link
@@ -85,12 +85,13 @@ def main():
     else:
         tg = (lv.get("art") or {}).get("titlegraphic")
         photo = posixpath.normpath(f"liveries/{name}/{tg}") if isinstance(tg, str) else None
+    starter = rewrite_starter(a.starter.read_text(), name, photo, bool(a.photo))
     missing = [str(src) for src in files.values() if not src.is_file()]
     if missing:
         sys.exit("missing: " + ", ".join(missing))
     a.out.unlink(missing_ok=True)
     with zipfile.ZipFile(a.out, "w", zipfile.ZIP_DEFLATED) as zf:
-        zf.writestr("talk.tex", rewrite_starter(a.starter.read_text(), name, photo, bool(a.photo)))
+        zf.writestr("talk.tex", starter)
         zf.writestr("latexmkrc", LATEXMKRC)
         for arc, src in files.items():
             zf.write(src, arc)
