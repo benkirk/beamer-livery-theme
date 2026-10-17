@@ -103,14 +103,36 @@ def today(L: dict) -> dict:
                "bar": {"role": "dark", "opacity": 0.72, "box": box(0, 0, 1, 180 / H)},
                "column": {"box": box(m, 0, pad, 180 / H), "anchor": "middle", "role": "background", "tab": False, "rule": None},
                "panel": {"role": "dark", "opacity": 0.72, "box": box(m, 230 / H, 0.52 * pad, 1 - 300 / H)}}
-    return {"title": title, "title-photo": photo(title), "title-light": light(title), "title-photo-light": light(photo(title)),
-            "title-band": band, "closing": closing, "closing-light": light(closing), "closing-band": cband,
-            "section": section, "feature": feature}
+    res = {"title": title, "title-photo": photo(title), "title-light": light(title), "title-photo-light": light(photo(title)),
+           "title-band": band, "closing": closing, "closing-light": light(closing), "closing-band": cband,
+           "section": section, "feature": feature}
+    return json.loads(json.dumps(res))   # no shared boxes, so a delta edits one entry
 
 
 # One row per decision ("Which value wins"): what the three formats drew, and the change to today()
 # (None when HTML already drew the decided value and only beamer or pptx move).
-EXPECTED_DELTAS = {}
+COVERS = ("title", "title-photo", "title-light", "title-photo-light")
+PHOTOS = ("title-photo", "title-photo-light")
+
+
+def each(comps, fn):
+    """An EXPECTED_DELTAS change: fn(entry, livery) on each named composition."""
+    return lambda c, L: [fn(c[k], L) for k in comps]
+
+
+def setbox(key, i, value):
+    """Set coordinate i (x y w h = 0 1 2 3) of key's box where the entry has the key; value may be fn(livery)."""
+    def fn(x, L):
+        if x[key]:
+            x[key]["box"][i] = value(L) if callable(value) else value
+    return fn
+
+
+EXPECTED_DELTAS = {
+    # row: (what each format drew and what was decided, the change to today() or None)
+    "cover photo box": ({"pdf": "0.52W anchored right", "html": "left 48%, w 52%", "pptx": "full slide",
+                         "decided": "[0.48, 0, 0.52, 1]"}, None),
+}
 
 
 def close(a, b, path=""):
