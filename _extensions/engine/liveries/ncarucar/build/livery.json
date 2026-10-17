@@ -243,52 +243,61 @@
     "feature": {
       "art": null,
       "band": null,
-      "bar": {
-        "box": [
-          0,
-          0,
-          1,
-          0.2
-        ],
-        "opacity": 0.72,
-        "role": "dark"
-      },
+      "bar": null,
       "column": {
-        "anchor": "middle",
+        "anchor": "top",
         "box": [
           0.06,
-          0,
-          0.88,
-          0.2
+          0.34,
+          0.44,
+          0.52
         ],
-        "role": "background",
-        "rule": null,
-        "tab": false
+        "role": "primary-text",
+        "rule": [
+          0.13,
+          0.0033
+        ],
+        "tab": true
       },
       "eyebrow": null,
-      "field": null,
+      "field": {
+        "box": [
+          0,
+          0,
+          0.5,
+          1
+        ],
+        "role": "primary"
+      },
       "fineprint": null,
-      "mark": null,
-      "panel": {
+      "mark": {
         "box": [
           0.06,
-          0.2556,
-          0.4576,
-          0.6667
+          0.06,
+          0.1623,
+          0.09
         ],
-        "opacity": 0.72,
-        "role": "dark"
+        "role": "primary"
       },
+      "panel": null,
       "photo": {
         "box": [
+          0.48,
           0,
-          0,
-          1,
+          0.52,
           1
         ]
       },
       "signoff": null,
-      "waves": null
+      "waves": {
+        "line": 0.0015,
+        "opacity": [
+          0.65
+        ],
+        "role": "secondary",
+        "shift": 0,
+        "style": "cover"
+      }
     },
     "section": {
       "art": null,
