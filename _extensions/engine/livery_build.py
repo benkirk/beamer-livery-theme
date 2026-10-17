@@ -338,13 +338,15 @@ def compositions(name: str, data: dict, out: dict) -> dict:
                   "column": {"box": _box(m, top, split - m - 64 / W, bottom - top), "anchor": "middle",
                              "role": "primary-text", "tab": True, "rule": rule},
                   "fineprint": {"box": _box(m, bottom + 16 / H, 0.50, 0.06), "anchor": "top", "role": t["field-text"]}}
-    closing_col = {"box": _box(m, 150 / H, 0.60 * pad_w, 1 - 150 / H - 80 / H), "anchor": "middle",
+    cm = (0.09, logo.get("closing", 0.10))   # the closing mark's y and height; the column starts 0.03 under it
+    cy = cm[0] + cm[1] + 0.03
+    closing_col = {"box": _box(m, cy, 0.62, 0.88 - cy), "anchor": "middle",
                    "role": "primary-text", "tab": True, "rule": None}
     closing = merge({**empty,
                      "field": {"role": "primary", "box": _box(0, 0, 1, 1)},
                      "art": "closing" if has_art("closing") else None,
                      "waves": wave("bands", shift.get("title", 0), [0.18, 0.10]),
-                     "mark": mark(0.09, logo.get("closing", 0.10), "primary"),
+                     "mark": mark(*cm, "primary"),
                      "signoff": signoff("primary"),
                      "column": closing_col}, over.get("closing") or {})
     closing_band = {**empty,

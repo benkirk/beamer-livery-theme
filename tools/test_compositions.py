@@ -154,6 +154,11 @@ EXPECTED_DELTAS = {
                                each(("title-light", "closing-light"), lambda x, L: x.update(art=None))),
     "section column": ({"pdf": "vfill thirds, 0.62W", "html": "centred in divider, 0.546W", "pptx": "centred, 0.62",
                         "decided": "centred in [m, divider.top, 0.62, ...]"}, each(("section",), setbox("column", 2, 0.62))),
+    "closing column": ({"pdf": "vfill thirds, 0.62W", "html": "centred in padding, 0.528W", "pptx": "fixed 0.30/0.49, 0.62W",
+                        "decided": "[m, mark bottom + 0.03, 0.62, 0.88 - y] middle"},
+                       each(("closing", "closing-light", "closing-band"), lambda x, L: x["column"].update(
+                           box=[L["geometry"]["margin"], 0.09 + L["geometry"]["logo"]["closing"] + 0.03, 0.62,
+                                0.88 - 0.09 - L["geometry"]["logo"]["closing"] - 0.03]))),
 }
 
 

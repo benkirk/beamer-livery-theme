@@ -110,9 +110,9 @@
         "anchor": "middle",
         "box": [
           0.06,
-          0.1667,
-          0.528,
-          0.7444
+          0.22,
+          0.62,
+          0.66
         ],
         "role": "primary-text",
         "rule": null,
@@ -160,9 +160,9 @@
         "anchor": "middle",
         "box": [
           0.06,
-          0.1667,
-          0.528,
-          0.7444
+          0.22,
+          0.62,
+          0.66
         ],
         "role": "background",
         "rule": null,
@@ -201,9 +201,9 @@
         "anchor": "middle",
         "box": [
           0.06,
-          0.1667,
-          0.528,
-          0.7444
+          0.22,
+          0.62,
+          0.66
         ],
         "role": "foreground",
         "rule": null,
