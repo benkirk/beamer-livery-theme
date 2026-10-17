@@ -150,6 +150,8 @@ EXPECTED_DELTAS = {
     "section mark under title=light": ({"pdf": "light", "html": "dark", "pptx": "dark", "decided": "role primary"}, None),
     "art.title under a photo": ({"pdf": "none", "html": "painted", "pptx": "hidden", "decided": None},
                                  each(PHOTOS, lambda x, L: x.update(art=None))),
+    "art.title under light": ({"pdf": "painted", "html": "painted", "pptx": "none", "decided": None},
+                               each(("title-light", "closing-light"), lambda x, L: x.update(art=None))),
 }
 
 

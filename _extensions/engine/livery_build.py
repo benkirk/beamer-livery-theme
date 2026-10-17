@@ -320,7 +320,7 @@ def compositions(name: str, data: dict, out: dict) -> dict:
 
     def light(c):
         w = c["waves"]
-        return variant(c, field={"role": "background"},
+        return variant(c, art=None, field={"role": "background"},
                        waves=w and {**w, "style": "lines", "opacity": []} if w and w["style"] == "bands" else w,
                        mark=c["mark"] and {**c["mark"], "role": "background"},
                        signoff=c["signoff"] and {**c["signoff"], "role": "background"},
