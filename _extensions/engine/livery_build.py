@@ -50,13 +50,14 @@ SLOT_ROLES = {"dk1": "foreground", "lt1": "background", "dk2": "primary", "lt2":
               "accent5": "warning", "accent6": "primary-contrast", "hlink": "primary", "folHlink": "highlight"}
 # the livery.yml keys this script reads; any other is reported, not silently dropped
 KNOWN = {"name", "extends", "roles", "derived", "aspect", "geometry", "divider", "art", "pptx", "overrides",
-         "latex", "signoff", "title", "marks", "installed-fonts", "compositions"}
+         "latex", "signoff", "title", "marks", "installed-fonts", "compositions", "feature"}
 # the fields every livery has: content slides on the background role, the colored fields (dividers,
 # the cover title and closing, feature covers) on primary; a band title adds its own field role
 MARK_ROLES = ("background", "primary")
 # the compositions every livery.json carries (compositions()), and the keys each one has (null when absent)
 COMPOSITIONS = ("title", "title-photo", "title-light", "title-photo-light", "title-band",
                 "closing", "closing-light", "closing-band", "section", "feature")
+FEATURE_STYLES = ("bar", "cover")   # feature.style: the photo under a bar and panel, or the cover
 COMP_KEYS = ("field", "art", "photo", "band", "waves", "bar", "panel", "mark", "signoff", "column", "fineprint", "eyebrow")
 # installed-fonts faces, and how a bare family string names them (full name, PostScript name)
 FACES = {"regular": ("", ""), "bold": (" Bold", "-Bold"), "italic": (" Italic", "-Italic"),
@@ -369,6 +370,12 @@ def compositions(name: str, data: dict, out: dict) -> dict:
                "bar": {"role": "dark", "opacity": 0.72, "box": _box(0, 0, 1, 180 / H)},
                "column": {"box": _box(m, 0, pad_w, 180 / H), "anchor": "middle", "role": "background", "tab": False, "rule": None},
                "panel": {"role": "dark", "opacity": 0.72, "box": _box(m, 230 / H, 0.52 * pad_w, 1 - 230 / H - 70 / H)}}
+    style = (data.get("feature") or {}).get("style", "bar")
+    if style not in FEATURE_STYLES:
+        sys.exit(f"{name}: feature.style {style!r} is not one of {FEATURE_STYLES}")
+    if style == "cover":   # the cover with the deck's photo, the body where the subtitle would be
+        tp = photo(title)
+        feature = variant(tp, fineprint=None, column={"box": _box(m, 0.34, 0.44, 0.52), "anchor": "top"})
     res = {"title": title,
            "title-photo": photo(title),
            "title-light": light(title),

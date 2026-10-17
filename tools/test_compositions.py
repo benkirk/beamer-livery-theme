@@ -167,6 +167,8 @@ EXPECTED_DELTAS = {
                                   "decided": "ignored, with a warning"}, None),
     "closing under title=light, pptx": ({"pdf": "light", "html": "light", "pptx": "dark Closing",
                                          "decided": "new Closing (light) layout"}, None),
+    "feature": ({"pdf": "photo + bar + blocks", "html": "photo + bar + panel", "pptx": "the cover with a mark",
+                 "decided": "per livery: feature.style, engine default bar"}, None),
 }
 
 
@@ -244,9 +246,14 @@ def main():
         errs += check("banded", L)
         if close(L["compositions"]["title-band"]["band"]["box"], [0, 0.30, 1, 0.40]):
             errs.append("banded: the flavor's band numbers did not reach title-band")
+        # feature.style cover: the title-photo composition with the body's column
+        L = flavor(tmp, "covered", ncar, "feature: {style: cover}\n")
+        f, tp = L["compositions"]["feature"], L["compositions"]["title-photo"]
+        if close({**f, "column": None}, {**tp, "column": None, "fineprint": None}) or close(f["column"]["box"], [0.06, 0.34, 0.44, 0.52]):
+            errs.append("covered: feature.style cover is not the title-photo composition with the body column")
     for e in errs:
         print("FAIL", e)
-    print(f"compositions: {len(liveries)} liveries and 2 flavors, {'%d failures' % len(errs) if errs else 'all as decided'}")
+    print(f"compositions: {len(liveries)} liveries and 3 flavors, {'%d failures' % len(errs) if errs else 'all as decided'}")
     sys.exit(1 if errs else 0)
 
 
