@@ -147,6 +147,7 @@ EXPECTED_DELTAS = {
                    "decided": "[m, 0.86, w, 0.10] anchor bottom; the column ends at 0.86"},
                   lambda c, L: [each(COVERS, setbox("column", 3, 0.66))(c, L), each(PHOTOS, setbox("fineprint", 2, 0.44))(c, L)]),
     "sign-off under title=light": ({"pdf": "dark", "html": "light", "pptx": "light", "decided": "role background"}, None),
+    "section mark under title=light": ({"pdf": "light", "html": "dark", "pptx": "dark", "decided": "role primary"}, None),
 }
 
 
