@@ -77,7 +77,10 @@ local function load_livery(meta, brand)
       .. "to a livery directory, or themeoptions brand=ncar|ucar|ucp|ncarucar for a bundled one")
   end
   local livery = quarto.json.decode(f:read("a")); f:close()
-  livery.dir = dir
+  -- the physical directory: a flavor's inherited files are `../<parent>/...`, and joined onto a
+  -- link (a deck's `_livery`) the path is normalized as text, `_livery/..` becoming the deck
+  local ok, real = pcall(pandoc.system.with_working_directory, dir, pandoc.system.get_working_directory)
+  livery.dir = ok and real or dir
   return livery
 end
 
