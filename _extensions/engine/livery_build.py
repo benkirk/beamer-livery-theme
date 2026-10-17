@@ -300,9 +300,9 @@ def compositions(name: str, data: dict, out: dict) -> dict:
              "waves": wave("bands", shift.get("title", 0), [0.18, 0.10]),
              "mark": mark(*tm, "primary"),
              "signoff": signoff("primary"),
-             "column": {"box": _box(m, ty, 0.50, 1 - ty - 60 / H), "anchor": "top",
+             "column": {"box": _box(m, ty, 0.50, 0.86 - ty), "anchor": "top",
                         "role": "primary-text", "tab": True, "rule": rule},
-             "fineprint": {"box": _box(m, 1 - 36 / H - 0.10, 0.50, 0.10), "anchor": "bottom", "role": "primary-text"}}
+             "fineprint": {"box": _box(m, 0.86, 0.50, 0.10), "anchor": "bottom", "role": "primary-text"}}
     over = data.get("compositions") or {}
     for k, v in over.items():
         if k not in COMPOSITIONS:
@@ -313,8 +313,8 @@ def compositions(name: str, data: dict, out: dict) -> dict:
     title = merge(title, over.get("title") or {})
 
     def photo(c):
-        col = c["column"]["box"]
-        return variant(c, field={"box": _box(0, 0, 0.5, 1)}, photo={"box": _box(0.48, 0, 0.52, 1)},
+        col, fp = c["column"]["box"], c["fineprint"]
+        return variant(c, fineprint=fp and {**fp, "box": [fp["box"][0], fp["box"][1], 0.44, fp["box"][3]]}, field={"box": _box(0, 0, 0.5, 1)}, photo={"box": _box(0.48, 0, 0.52, 1)},
                        waves=wave("cover", 0, [0.65], "secondary"),
                        column={"box": [col[0], col[1], 0.44, col[3]]})
 

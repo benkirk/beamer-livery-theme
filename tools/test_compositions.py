@@ -143,6 +143,9 @@ EXPECTED_DELTAS = {
     "title column w, photo": ({"pdf": 0.47, "html": 0.387, "pptx": 0.50, "decided": 0.44},
                                each(PHOTOS, setbox("column", 2, 0.44))),
     "title rule": ({"pdf": "0.13W x 1.2pt", "html": "0.13W x 3px", "pptx": "0.065W x 1.5pt", "decided": "[0.13, 0.0033]"}, None),
+    "fineprint": ({"pdf": "0.02H above the floor", "html": "bottom 36px, w 50%", "pptx": "none",
+                   "decided": "[m, 0.86, w, 0.10] anchor bottom; the column ends at 0.86"},
+                  lambda c, L: [each(COVERS, setbox("column", 3, 0.66))(c, L), each(PHOTOS, setbox("fineprint", 2, 0.44))(c, L)]),
 }
 
 
