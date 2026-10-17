@@ -338,7 +338,7 @@ def compositions(name: str, data: dict, out: dict) -> dict:
                   "mark": smark, "signoff": ssign,
                   "column": {"box": _box(m, top, split - m - 64 / W, bottom - top), "anchor": "middle",
                              "role": "primary-text", "tab": True, "rule": rule},
-                  "fineprint": {"box": _box(m, bottom + 16 / H, 0.50, 0.06), "anchor": "top", "role": t["field-text"]}}
+                  "fineprint": {"box": _box(m, bottom + 0.018, split - m - 64 / W, 0.06), "anchor": "top", "role": t["field-text"]}}
     cm = (0.09, logo.get("closing", 0.10))   # the closing mark's y and height; the column starts 0.03 under it
     cy = cm[0] + cm[1] + 0.03
     closing_col = {"box": _box(m, cy, 0.62, 0.88 - cy), "anchor": "middle",

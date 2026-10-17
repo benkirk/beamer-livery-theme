@@ -328,8 +328,8 @@ html div.reveal div.slides section.engine-title.quarto-title-block.engine-band {
   --engine-cmp-column-h: 405px;
   --engine-cmp-fineprint-display: block;
   --engine-cmp-fineprint-x: 96px;
-  --engine-cmp-fineprint-y: 664px;
-  --engine-cmp-fineprint-w: 800px;
+  --engine-cmp-fineprint-y: 664.2px;
+  --engine-cmp-fineprint-w: 832px;
   --engine-cmp-fineprint-h: 54px;
   --engine-cmp-field: var(--engine-dark);
   --engine-cmp-text: var(--engine-primary-text);

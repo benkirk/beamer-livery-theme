@@ -169,6 +169,9 @@ EXPECTED_DELTAS = {
                                          "decided": "new Closing (light) layout"}, None),
     "feature": ({"pdf": "photo + bar + blocks", "html": "photo + bar + panel", "pptx": "the cover with a mark",
                  "decided": "per livery: feature.style, engine default bar"}, None),
+    "band fineprint gap": ({"pdf": "bottom + 0.02", "html": "bottom + 0.018", "pptx": "none", "decided": 0.018},
+                           lambda c, L: (setbox("fineprint", 1, lambda L: {**lb.BAND, **L.get("title", {})}["bottom"] + 0.018)(c["title-band"], L),
+                                         setbox("fineprint", 2, lambda L: {**lb.BAND, **L.get("title", {})}["split"] - L["geometry"]["margin"] - 0.04)(c["title-band"], L))),
 }
 
 
