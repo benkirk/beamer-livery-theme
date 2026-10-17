@@ -359,7 +359,7 @@ def compositions(name: str, data: dict, out: dict) -> dict:
                "waves": wave("bands", shift.get("section", 0), [0.18, 0.10]),
                "mark": mark(0.08, logo.get("section", 0.08), "primary"),
                "signoff": signoff("primary"),
-               "column": {"box": _box(m, div.get("top", 0.1333), 0.62 * pad_w, 1 - div.get("top", 0.1333) - div.get("bottom", 0.0889)),
+               "column": {"box": _box(m, div.get("top", 0.1333), 0.62, 1 - div.get("top", 0.1333) - div.get("bottom", 0.0889)),
                           "anchor": "middle", "role": "primary-text", "tab": bool(dv.get("tab", True)), "rule": None},
                "eyebrow": {"label": dv.get("label", "Section"), "color": dv.get("label-color", "secondary")}}
     feature = {**empty,

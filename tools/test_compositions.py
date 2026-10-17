@@ -152,6 +152,8 @@ EXPECTED_DELTAS = {
                                  each(PHOTOS, lambda x, L: x.update(art=None))),
     "art.title under light": ({"pdf": "painted", "html": "painted", "pptx": "none", "decided": None},
                                each(("title-light", "closing-light"), lambda x, L: x.update(art=None))),
+    "section column": ({"pdf": "vfill thirds, 0.62W", "html": "centred in divider, 0.546W", "pptx": "centred, 0.62",
+                        "decided": "centred in [m, divider.top, 0.62, ...]"}, each(("section",), setbox("column", 2, 0.62))),
 }
 
 
