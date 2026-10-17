@@ -286,7 +286,7 @@ def compositions(name: str, data: dict, out: dict) -> dict:
     def wave(style, shift, opacity, role="secondary"):
         if not waves:
             return None
-        return {"style": style, "shift": shift, "role": role, "opacity": opacity, "line": round(2.4 / W, 4)}
+        return {"style": style, "shift": shift, "role": role, "opacity": opacity, "line": 0.0015}
 
     shift = (waves or {}).get("shift", {})
     empty = dict.fromkeys(COMP_KEYS)
