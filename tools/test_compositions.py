@@ -165,6 +165,8 @@ EXPECTED_DELTAS = {
                                 {**lb.BAND, **L.get("title", {})}["bottom"] - 0.13])),
     "title=light under a band": ({"pdf": "ignored", "html": "ignored", "pptx": "light cover",
                                   "decided": "ignored, with a warning"}, None),
+    "closing under title=light, pptx": ({"pdf": "light", "html": "light", "pptx": "dark Closing",
+                                         "decided": "new Closing (light) layout"}, None),
 }
 
 
