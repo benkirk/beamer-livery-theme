@@ -163,6 +163,8 @@ EXPECTED_DELTAS = {
                              "decided": "[m, 0.10, 0.62, bottom - 0.13]"},
                             lambda c, L: c["closing-band"]["column"].update(box=[L["geometry"]["margin"], 0.10, 0.62,
                                 {**lb.BAND, **L.get("title", {})}["bottom"] - 0.13])),
+    "title=light under a band": ({"pdf": "ignored", "html": "ignored", "pptx": "light cover",
+                                  "decided": "ignored, with a warning"}, None),
 }
 
 
