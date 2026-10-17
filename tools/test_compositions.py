@@ -148,6 +148,8 @@ EXPECTED_DELTAS = {
                   lambda c, L: [each(COVERS, setbox("column", 3, 0.66))(c, L), each(PHOTOS, setbox("fineprint", 2, 0.44))(c, L)]),
     "sign-off under title=light": ({"pdf": "dark", "html": "light", "pptx": "light", "decided": "role background"}, None),
     "section mark under title=light": ({"pdf": "light", "html": "dark", "pptx": "dark", "decided": "role primary"}, None),
+    "art.title under a photo": ({"pdf": "none", "html": "painted", "pptx": "hidden", "decided": None},
+                                 each(PHOTOS, lambda x, L: x.update(art=None))),
 }
 
 
