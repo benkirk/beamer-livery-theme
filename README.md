@@ -1,3 +1,5 @@
+> **This repository is archived (October 2026).** The engine now lives in [`quarto-livery-decks`](https://github.com/benkirk/quarto-livery-decks), in `_extensions/engine/`. It moved there with its full history (benkirk/quarto-livery-decks#57). Fixes and new liveries land there, and so do new releases: an Overleaf zip and a charts bundle per livery, NCAR's included, on its [latest release](https://github.com/benkirk/quarto-livery-decks/releases/latest). This repository and its releases, through v3.8.0, stay readable, but it takes no more changes.
+
 # Engine: a beamer and revealjs theme with brand liveries
 
 One layout engine, many brand **liveries**. Write your slides in **LaTeX beamer**
